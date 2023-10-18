@@ -264,3 +264,19 @@ footer {
 #items-list li{
     display: flex;
 }
+
+
+/* Dashboard */
+.dashboard-events-container form{
+    display: inline-block;
+}
+
+.dashboard-events-container table{
+    text-align: center;
+}
+
+/* Edit Event */
+.img-preview{
+    width: 150px;
+    margin-top: 30px;
+}

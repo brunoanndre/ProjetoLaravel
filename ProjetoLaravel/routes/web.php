@@ -15,14 +15,31 @@ use App\Http\Controllers\EventController;
 
 //Events Routes
 Route::get('/', [EventController::class,'index']);
+
+//Create a new event
 Route::get('/events/create', [EventController::class,'create'])->middleware('auth');
 Route::post('/events',[EventController::class,'store']);
-Route::get('/events/{id}',[EventController::class,'show']);
-/*Route::get('/login',function(){
-    return view('auth.login');
-});*/
 
-Route::middleware([
+//Event page
+Route::get('/events/{id}',[EventController::class,'show']);
+
+//User Events
+Route::get('/dashboard',[EventController::class,'dashboard'])->middleware('auth');
+
+//Delete events
+Route::delete('/events/{id}',[EventController::class,'destroy'])->middleware('auth');
+
+//Edit events
+Route::get('/events/edit/{id}',[EventController::class,'edit'])->middleware('auth');
+Route::put('/events/update/{id}',[EventController::class,'update'])->middleware('auth');
+
+//join event
+Route::post('/events/join/{id}',[EventController::class,'joinEvent'])->middleware('auth');
+
+//Leave event
+Route::delete('/events/leave/{id}',[EventController::class,'leaveEvent'])->middleware('auth');
+
+/*Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
@@ -30,4 +47,4 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-});
+});*/
